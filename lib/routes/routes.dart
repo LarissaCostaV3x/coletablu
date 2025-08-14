@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../views/login.dart';
+
 // ignore: avoid_classes_with_only_static_members
 ///named routes
 class Routes {
@@ -11,7 +13,7 @@ class Routes {
         return PageTransition(
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 250),
-          child: const Placeholder(),
+          child: const LoginPage(),
         );
       case '/Home':
         return PageTransition(
