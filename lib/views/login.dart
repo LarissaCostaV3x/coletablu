@@ -13,6 +13,10 @@ class LoginPage extends StatelessWidget {
       backgroundColor: ColorsApp.secondary,
       body: Column(
         children: [
+         Image.asset(
+  'images/logo.png',
+  height: 200,
+),
           Text('Bem-vindo !'),
         ],
       ),
