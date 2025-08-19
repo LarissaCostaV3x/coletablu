@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../consts/theme.dart';
+import '../consts/colors.dart';
 
 ///Login page
 class LoginPage extends StatelessWidget {
@@ -9,15 +9,19 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = TextStyle(
+        color: ColorsApp.primary, fontSize: 24, fontWeight: FontWeight.bold);
+
     return Scaffold(
       backgroundColor: ColorsApp.secondary,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-         Image.asset(
-  'images/logo.png',
-  height: 200,
-),
-          Text('Bem-vindo !'),
+          Image.asset(
+            'images/logo.png',
+            height: 80,
+          ),
+          Text('Bem-vindo !', style: textStyle),
         ],
       ),
     );
