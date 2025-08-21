@@ -14,4 +14,10 @@ class ColorsApp {
 
   ///light yellow color
   static const Color lightYellow = Color(0xFFFEFEEB);
+
+  ///white
+  static const Color white = Color(0xFFFFFFFF);
+
+  ///color black
+  static const Color black = Color(0xFF000000);
 }
