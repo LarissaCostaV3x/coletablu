@@ -23,7 +23,6 @@ linter:
     - directives_ordering
     - curly_braces_in_flow_control_structures
     - slash_for_doc_comments
-    - package_api_docs # prefer
     - public_member_api_docs # prefer
     - implementation_imports
     - avoid_relative_lib_imports

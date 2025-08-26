@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'consts/theme.dart';
 import 'firebase_options.dart';
 import 'routes/routes.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.themeData(),
       debugShowCheckedModeBanner: false,
       title: 'ColetaBlu',
       initialRoute: '/',

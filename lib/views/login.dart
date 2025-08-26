@@ -8,43 +8,18 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleStyle = TextStyle(color: ColorsApp.black, fontSize: 20);
+    final titleStyle = TextStyle(color: ColorsApp.text, fontSize: 20);
 
     return Scaffold(
-      backgroundColor: ColorsApp.lightYellow,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 50,
         children: [
-          Image.asset(
-            'images/logo.png',
-            height: 80,
+          // Image.asset('images/logo_all.png'),
+          Text(
+            'Bem-vindo',
+            style: titleStyle,
           ),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: ColorsApp.black.withValues(alpha: 0.1),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-              color: ColorsApp.secondary,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(8),
-                topRight: Radius.circular(8),
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Criar Conta', style: titleStyle),
-              ],
-            ),
-          ),
+          const Text('Facilitando sua coleta e economia'),
+          TextFormField(),
         ],
       ),
     );
