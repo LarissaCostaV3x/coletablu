@@ -16,7 +16,7 @@ class ColorsApp {
   static const Color lightYellow = Color(0xFFFEFEEB);
 
   ///text color
-  static const Color text = Color.fromARGB(255, 30, 34, 28);
+  static const Color text = Color(0xFF345C4D);
 
   ///border color
   static const Color borderOlive = Color.fromRGBO(180, 160, 90, 0.3);
