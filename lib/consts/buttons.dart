@@ -17,6 +17,15 @@ class ButtonsCustom {
     iconSize: 16,
   );
 
+  ///default text button
+  static ButtonStyle defaultTextButton = TextButton.styleFrom(
+    foregroundColor: ColorsApp.text,
+    textStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+    padding: EdgeInsets.zero,
+    minimumSize: Size(0, 0),
+    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+  );
+
   // ///default outline button
   // static ButtonStyle defaultOutlineButton = OutlinedButton.styleFrom(
   //   side: BorderSide(color: ColorsApp.disable),

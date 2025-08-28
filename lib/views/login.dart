@@ -9,18 +9,19 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final titleStyle = TextStyle(color: ColorsApp.text, fontWeight: FontWeight.bold);
+    final richStyle = TextStyle(color: ColorsApp.primary, fontWeight: FontWeight.bold);
 
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 8,
+          spacing: 16,
           children: [
             Center(
               child: Image.asset(
                 'images/logo_all.png',
-                height: 135,
+                height: 140,
                 fit: BoxFit.contain,
               ),
             ),
@@ -46,13 +47,40 @@ class LoginPage extends StatelessWidget {
                         hintText: 'Senha',
                       ),
                     ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Entrar'),
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
-            SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(onPressed: () {}, child: Text('Entrar'))),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'Esqueceu a senha?',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontSize: 14, 
+                    ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: RichText(
+                text: TextSpan(
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 14),
+                    children: [
+                      TextSpan(text: 'Não possui uma conta? '),
+                      TextSpan(
+                        text: 'Cadastre-se',
+                        style: richStyle,
+                      )
+                    ]),
+              ),
+            ),
           ],
         ),
       ),

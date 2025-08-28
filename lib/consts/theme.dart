@@ -9,9 +9,12 @@ class AppTheme {
 
   /// Default theme
   static ThemeData themeData() {
+    final styleText = TextStyle(color: ColorsApp.text, fontSize: 16);
+
     return ThemeData(
       fontFamily: 'SF',
-      textTheme: const TextTheme(bodyMedium: TextStyle(fontSize: 16, color: ColorsApp.text)),
+      textTheme: TextTheme(
+          bodyMedium: styleText, bodyLarge: styleText, bodySmall: styleText, titleLarge: styleText),
       scaffoldBackgroundColor: ColorsApp.lightYellow,
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -31,6 +34,7 @@ class AppTheme {
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonsCustom.defaultElevatedButton),
+      textButtonTheme: TextButtonThemeData(style: ButtonsCustom.defaultTextButton),
     );
   }
 }
