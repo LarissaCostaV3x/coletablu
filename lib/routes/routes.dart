@@ -15,7 +15,7 @@ class Routes {
           duration: const Duration(milliseconds: 250),
           child: const LoginPage(),
         );
-      case '/Home':
+      case '/home':
         return PageTransition(
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 250),

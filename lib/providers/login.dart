@@ -18,33 +18,42 @@ class LoginState extends ChangeNotifier {
   ///Login service instance
   final service = LoginService();
 
- 
   ///toggle password visibility
   void toggleVisibility() {
     seePassword = !seePassword;
     notifyListeners();
   }
 
-  ///login method
-  Future<void> login(BuildContext context) async {
-    if (!formKey.currentState!.validate()) return;
+  ///reset login form inputs
+  void resetInputs() {
+    userController.clear();
+    passwordController.clear();
+    notifyListeners();
+  }
+
+  ///login method to sign in plataformn
+  Future<bool> login(BuildContext context) async {
+    if (!formKey.currentState!.validate()) return false;
     try {
+
       await service.signIn(
         email: userController.text,
         password: passwordController.text,
         navigator: Navigator.of(context),
       );
+      return true;
     } catch (e) {
-      if (context.mounted) {
-        // showDialog(
-        //   context: context,
-        //   builder:
-        //       (_) => ConfirmAlert(
-        //         title: 'Erro ao fazer login',
-        //         subtitle: e.toString().replaceAll('Exception:', '').trim(),
-        //       ),
-        // );
-      }
+      return false;
+    }
+  }
+
+  ///logout method to sign out plataform
+  Future<bool> logout(BuildContext context) async {
+    try {
+      await service.signOut(navigator: Navigator.of(context));
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 }

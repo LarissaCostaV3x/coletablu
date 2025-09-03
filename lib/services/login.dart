@@ -3,44 +3,11 @@ import 'package:flutter/material.dart';
 
 ///Login service
 class LoginService {
-  ///userUid
+  ///user uid
   late String userUid;
 
   ///firebase instance
   final firebase = FirebaseAuth.instance;
-
-  ///create User method
-  Future<void> createUser({required String email, required String password}) async {
-    try {
-      final createdUser = await firebase.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      final uid = createdUser.user?.uid;
-      if (uid == null) return;
-
-      userUid = uid;
-    } catch (e) {
-      throw Exception('Falha ao criar usuário auth: $e');
-    }
-  }
-
-  ///update User method
-  Future<void> updateUser({required String email}) async {
-    try {} catch (e) {
-      throw Exception('Falha ao atualizar usuário auth $e');
-    }
-  }
-
-  ///delete User method
-  Future<void> deleteUser() async {
-    try {
-      await firebase.currentUser?.delete();
-    } catch (e) {
-      throw Exception('Falha ao deletar usuário auth $e');
-    }
-  }
 
   ///signIn method
   Future<void> signIn({
@@ -49,9 +16,10 @@ class LoginService {
     required NavigatorState navigator,
   }) async {
     try {
+
       await firebase.signInWithEmailAndPassword(email: email, password: password);
 
-      navigator.pushReplacementNamed('/mainApp');
+      navigator.pushReplacementNamed('/home');
     } on FirebaseAuthException catch (e) {
       String? message;
       if (e.code == 'invalid-email') {
@@ -72,7 +40,7 @@ class LoginService {
     navigator.pushReplacementNamed('/login');
   }
 
-  ///resetPassword method
+  ///reset password method
   Future<void> resetPassword({required String email}) async {
     try {
       await firebase.sendPasswordResetEmail(email: email);

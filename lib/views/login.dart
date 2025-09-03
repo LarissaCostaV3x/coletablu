@@ -12,6 +12,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final titleStyle = TextStyle(color: ColorsApp.text, fontWeight: FontWeight.bold);
     final richStyle = TextStyle(color: ColorsApp.primary, fontWeight: FontWeight.bold);
+
     final state = Provider.of<LoginState>(context);
     return Scaffold(
       body: Column(
@@ -38,40 +39,48 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
                     child: Form(
+                      key: state.formKey,
                       child: Column(
                         spacing: 8,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           TextFormField(
+                            controller: state.userController,
                             decoration: const InputDecoration(
                               hintText: 'Email',
                             ),
                             validator: (value) {
                               if (value == null || value.trim().isEmpty) {
-                                return 'Por favor, insira um email';
+                                return 'Por favor, insira um email válido';
                               }
                               return null;
                             },
                           ),
                           TextFormField(
-                            decoration: const InputDecoration(
+                            controller: state.passwordController,
+                            obscureText: state.seePassword,
+                            decoration:  InputDecoration(
                               hintText: 'Senha',
+                              suffix: InkWell(
+                                onTap: state.toggleVisibility,
+                                child: state.seePassword
+                                    ? Text('a')
+                                    : Text('b'),
+                              ),
                             ),
                             validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
-                                return 'Por favor, insira um email';
+                              if (value == null || value.trim().isEmpty || value.length < 6) {
+                                return 'Por favor, insira uma senha válida';
                               }
                               return null;
                             },
                           ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                if (!state.formKey.currentState!.validate()) return;
-                              },
-                              child: const Text('Entrar'),
-                            ),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (!state.formKey.currentState!.validate()) return;
+                              state.login(context);
+                            },
+                            child: const Text('Entrar'),
                           ),
                         ],
                       ),
