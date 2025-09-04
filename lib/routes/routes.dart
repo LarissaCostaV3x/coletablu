@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../views/login.dart';
+import '../views/login/login_view.dart';
 
 // ignore: avoid_classes_with_only_static_members
 ///named routes

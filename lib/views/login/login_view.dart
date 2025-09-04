@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../consts/colors.dart';
-import '../providers/login.dart';
+import '../../consts/colors.dart';
+import '../../providers/login.dart';
+part './register.dart';
+
 
 ///Login page
 class LoginPage extends StatelessWidget {
@@ -45,12 +47,15 @@ class LoginPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           TextFormField(
-                            controller: state.userController,
+                            controller: state.emailController,
                             decoration: const InputDecoration(
                               hintText: 'Email',
                             ),
                             validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
+                              if (value == null ||
+                                  value.trim().isEmpty ||
+                                  !value.contains('@') ||
+                                  !value.contains('.')) {
                                 return 'Por favor, insira um email válido';
                               }
                               return null;
@@ -59,13 +64,11 @@ class LoginPage extends StatelessWidget {
                           TextFormField(
                             controller: state.passwordController,
                             obscureText: state.seePassword,
-                            decoration:  InputDecoration(
+                            decoration: InputDecoration(
                               hintText: 'Senha',
                               suffix: InkWell(
                                 onTap: state.toggleVisibility,
-                                child: state.seePassword
-                                    ? Text('a')
-                                    : Text('b'),
+                                child: state.seePassword ? Text('a') : Text('b'),
                               ),
                             ),
                             validator: (value) {
@@ -94,7 +97,12 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: _registerDialog,
+                      );
+                    },
                     child: RichText(
                       text: TextSpan(
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 14),

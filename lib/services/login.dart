@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 
 ///Login service
 class LoginService {
-  ///user uid
-  late String userUid;
-
   ///firebase instance
   final firebase = FirebaseAuth.instance;
 
@@ -16,7 +13,6 @@ class LoginService {
     required NavigatorState navigator,
   }) async {
     try {
-
       await firebase.signInWithEmailAndPassword(email: email, password: password);
 
       navigator.pushReplacementNamed('/home');

@@ -10,7 +10,7 @@ class ButtonsCustom {
     backgroundColor: ColorsApp.primary,
     foregroundColor: ColorsApp.lightYellow,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    padding: const EdgeInsets.symmetric(horizontal: 24, vertical:20),
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
     textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
     iconColor: ColorsApp.lightYellow,
     iconAlignment: IconAlignment.start,
