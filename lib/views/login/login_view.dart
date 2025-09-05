@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../consts/buttons.dart';
 import '../../consts/colors.dart';
 import '../../providers/login.dart';
 part './register.dart';
