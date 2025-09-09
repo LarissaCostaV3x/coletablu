@@ -2,7 +2,7 @@ part of './login_view.dart';
 
 ///Register modal for login page
 Widget _registerDialog(BuildContext context) {
-  final state = Provider.of<LoginState>(context);
+  final state = Provider.of<RegisterState>(context);
   final titleStyle = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
@@ -19,6 +19,7 @@ Widget _registerDialog(BuildContext context) {
         children: [
           const Text('Para começar, crie sua conta', textAlign: TextAlign.center),
           Form(
+            key: state.formKey,
             child: Column(
               spacing: 18,
               mainAxisSize: MainAxisSize.min,
@@ -31,7 +32,7 @@ Widget _registerDialog(BuildContext context) {
                   ),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return 'Por favor, insira um nome válido';
+                      return 'Insira um nome válido';
                     }
                     return null;
                   },
@@ -46,7 +47,7 @@ Widget _registerDialog(BuildContext context) {
                         value.trim().isEmpty ||
                         !value.contains('@') ||
                         !value.contains('.')) {
-                      return 'Por favor, insira um email válido';
+                      return 'Insira um email válido';
                     }
                     return null;
                   },
@@ -57,30 +58,37 @@ Widget _registerDialog(BuildContext context) {
                   decoration: InputDecoration(
                     hintText: 'Senha',
                     suffix: InkWell(
-                      onTap: state.toggleVisibility,
-                      child: state.seePassword ? Text('a') : Text('b'),
+                      onTap: () => state.toggleVisibility('password'),
+                      child:
+                          state.seePassword ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                     ),
                   ),
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty || value.length < 6) {
-                      return 'Por favor, insira uma senha válida';
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Insira uma senha válida';
+                    } else if (value.length < 6) {
+                      return 'Senha com no mínimo 6 caracteres';
                     }
                     return null;
                   },
                 ),
                 TextFormField(
-                  controller: state.passwordController,
-                  obscureText: state.seePassword,
+                  controller: TextEditingController(),
+                  obscureText: state.confirmPassword,
                   decoration: InputDecoration(
-                    hintText: 'Confirmar Senha',
+                    hintText: 'Confirmar Senha', //TODO
                     suffix: InkWell(
-                      onTap: state.toggleVisibility,
-                      child: state.seePassword ? Text('a') : Text('b'),
+                      onTap: () => state.toggleVisibility('confirmPassword'),
+                      child: state.confirmPassword
+                          ? Icon(Icons.visibility_off)
+                          : Icon(Icons.visibility),
                     ),
                   ),
                   validator: (value) {
                     if (value != state.passwordController.text) {
                       return 'As senhas não coincidem.';
+                    } else if (value == null || value.trim().isEmpty || value.length < 6) {
+                      return 'Insira uma senha válida';
                     }
                     return null;
                   },
@@ -91,7 +99,7 @@ Widget _registerDialog(BuildContext context) {
                   ),
                   onPressed: () {
                     if (!state.formKey.currentState!.validate()) return;
-                    state.login(context);
+                    // state.login(context);
                   },
                   child: const Text('Cadastrar'),
                 ),

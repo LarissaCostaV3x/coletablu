@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'consts/theme.dart';
 import 'firebase_options.dart';
 import 'providers/login.dart';
+import 'providers/register.dart';
 import 'routes/routes.dart';
 
 Future<void> main() async {
@@ -12,6 +13,7 @@ Future<void> main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => LoginState()),
+      ChangeNotifierProvider(create: (_) => RegisterState()),
     ],
     child: const MyApp(),
   ));

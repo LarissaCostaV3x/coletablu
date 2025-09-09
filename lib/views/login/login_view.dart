@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../consts/buttons.dart';
 import '../../consts/colors.dart';
 import '../../providers/login.dart';
+import '../../providers/register.dart';
 part './register.dart';
 
 
