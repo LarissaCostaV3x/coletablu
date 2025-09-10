@@ -27,9 +27,7 @@ Widget _registerDialog(BuildContext context) {
               children: [
                 TextFormField(
                   controller: state.nameController,
-                  decoration: const InputDecoration(
-                    hintText: 'Nome',
-                  ),
+                  decoration: const InputDecoration(hintText: 'Nome'),
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Insira um nome válido';
@@ -39,9 +37,7 @@ Widget _registerDialog(BuildContext context) {
                 ),
                 TextFormField(
                   controller: state.emailController,
-                  decoration: const InputDecoration(
-                    hintText: 'Email',
-                  ),
+                  decoration: const InputDecoration(hintText: 'Email'),
                   validator: (value) {
                     if (value == null ||
                         value.trim().isEmpty ||
@@ -59,8 +55,9 @@ Widget _registerDialog(BuildContext context) {
                     hintText: 'Senha',
                     suffix: InkWell(
                       onTap: () => state.toggleVisibility('password'),
-                      child:
-                          state.seePassword ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
+                      child: state.seePassword
+                          ? const Icon(Icons.visibility_off)
+                          : const Icon(Icons.visibility),
                     ),
                   ),
                   validator: (value) {
@@ -73,15 +70,15 @@ Widget _registerDialog(BuildContext context) {
                   },
                 ),
                 TextFormField(
-                  controller: TextEditingController(),
+                  controller: state.passwordConfirmController,
                   obscureText: state.confirmPassword,
                   decoration: InputDecoration(
-                    hintText: 'Confirmar Senha', //TODO
+                    hintText: 'Confirmar Senha',
                     suffix: InkWell(
                       onTap: () => state.toggleVisibility('confirmPassword'),
                       child: state.confirmPassword
-                          ? Icon(Icons.visibility_off)
-                          : Icon(Icons.visibility),
+                          ? const Icon(Icons.visibility_off)
+                          : const Icon(Icons.visibility),
                     ),
                   ),
                   validator: (value) {

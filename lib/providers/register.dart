@@ -13,6 +13,9 @@ class RegisterState extends ChangeNotifier {
 
   final TextEditingController passwordController = TextEditingController();
 
+  ///password controller to confirm
+  final TextEditingController passwordConfirmController = TextEditingController();
+
   ///key form for register modal
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();

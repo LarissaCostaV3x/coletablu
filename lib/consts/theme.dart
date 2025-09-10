@@ -19,6 +19,7 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
         hoverColor: Colors.transparent,
+        errorStyle: TextStyle(fontSize: 12),
         hintStyle: TextStyle(color: ColorsApp.text, fontSize: 16, fontWeight: FontWeight.normal),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
